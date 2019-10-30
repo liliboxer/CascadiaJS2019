@@ -1,24 +1,18 @@
 
 function toWords(number) {
   const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
-  const teens = {
-    11: 'eleven',
-    12: 'twelve',
-    13: 'thirteen',
-    14: 'fourteen',
-    15: 'fifteen',
-    16: 'sixteen',
-    17: 'seventeen',
-    18: 'eighteen',
-    19: 'nineteen',
-    20: 'twenty'
-  }
-  // const teens = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty']
+  const teens = ['', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+  const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
   let word;
-  if(number >= 11 && number <= 20 ) {
-    word = teens[number];
+
+  // 11-20
+  if(number >= 11 && number <= 19 ) {
+    const index = parseInt(number.toString().split('')[1])
+    word = teens[index];
   }
   
+  //1-10
   if (number >= 0 && number <= 10) {
     word = ones[number]
   }
@@ -27,7 +21,7 @@ function toWords(number) {
   return word;
 }
 
-toWords(20)
+toWords(8)
 
 // 0 - 10
 // 11 - 20
