@@ -1,19 +1,29 @@
 const data = require('./seed-data');
 
 function skills(data) {
-// take in data
-// return an object with the skills as keys
-let dictionary = {};
-let skills = []
-data.forEach(person => {
-  skills.push(...person.skills);   
-});
-skills.forEach(skill => {
- dictionary[skill] = 1;
-})
-console.log('hi');
-// asign values to associated names
-return dictionary;
+  // take in data
+  let dictionary = {};
+  let keys = [];
+  
+  // get nested skills into skills array
+  data.forEach(person => {
+    keys.push(...person.skills);   
+  });
+  
+  // set up dictionary keys 
+  // return an object with the skills as keys
+  keys.sort().forEach(skill => {
+  dictionary[skill] = 1;
+  })
+
+  data.forEach(person => {
+    console.log(person.skills)
+
+  })
+  console.log(dictionary)
+
+  // asign values to associated keys
+  return dictionary;
 }
 
 skills(data)
