@@ -23,13 +23,9 @@ function skills(data) {
     })
   })
 
-  console.log(dictionary)
-
+  console.log(dictionary);
+  
   return dictionary;
 }
 
 skills(data)
-
-// does john's skills include javascript 
-
-// console.log('person', person.skills.includes(skill));
