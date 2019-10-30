@@ -19,7 +19,7 @@ function skills(data) {
   data.forEach(person => {
     person.skills.forEach((skill) => {
       if(keys.includes(skill)) {
-        dictionary[skill] += person.name;
+        dictionary[skill].push(person.name)
       }
     })
   })
