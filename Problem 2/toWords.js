@@ -6,14 +6,21 @@ function toWords(number) {
 
   let word;
 
-  // 11-20
-  if(number >= 11 && number <= 19 ) {
+  // 20 - 99 
+  if(number < 100) {
+    const left = parseInt(number.toString().split('')[0])
+    const right = parseInt(number.toString().split('')[1])
+    word = `${tens[left]}-${ones[right]}`;
+  }
+
+  // 11-19
+  if(number < 20) {
     const index = parseInt(number.toString().split('')[1])
     word = teens[index];
   }
   
   //1-10
-  if (number >= 0 && number <= 10) {
+  if (number < 11) {
     word = ones[number]
   }
 
@@ -21,7 +28,4 @@ function toWords(number) {
   return word;
 }
 
-toWords(8)
-
-// 0 - 10
-// 11 - 20
+toWords(91)
