@@ -2,7 +2,7 @@
 function toWords(number) {
   const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
   const teens = ['', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-  const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+  const tens = ['', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
   let word;
   let thousand;
@@ -61,14 +61,44 @@ function toWords(number) {
     ten = parseInt(number.toString().split('')[2]);
     one = parseInt(number.toString().split('')[3]);
 
-    word = `${ones[thousand]}-thousand-${ones[hundred]}-hundred-${tens[ten]}-${ones[one]}`
-    
-    if(hundred === 0) {
-      word = `${ones[thousand]}-thousand-${tens[ten]}-${ones[one]}`
+    console.log(ten)
+
+    word = `${ones[thousand]}-thousand-${ones[hundred]}-hundred-${tens[ten]}`
+
+    if(one === 0) {
+      word = `${ones[thousand]}-thousand-${ones[hundred]}-hundred-${tens[ten]}`;
     }
-   
+
+    if(ten === 0) {
+      word = `${ones[thousand]}-thousand-${ones[hundred]}-hundred-${ones[one]}`;
+    }
+
+    if(hundred === 0) {
+      word = `${ones[thousand]}-thousand-${tens[ten]}-${ones[one]}`;
+    }
+
+    if(ten == 1 && one === 1) {
+      word = `${ones[thousand]}-thousand-${ones[hundred]}-hundred-${teens[one]}`;
+    }
+
     if(hundred === 0 && ten === 0 ) {
-      word = `${ones[thousand]}-thousand-${ones[one]}`
+      word = `${ones[thousand]}-thousand-${ones[one]}`;
+    }
+    
+    if(hundred === 0 && one === 0) {
+      word = `${ones[thousand]}-thousand-${tens[ten]}`;
+    }
+
+    if(hundred === 0 && ten == 1 && one === 1) {
+      word = `${ones[thousand]}-thousand-${teens[one]}`;
+    }
+
+    if(ten === 0 && one === 0) {
+      word = `${ones[thousand]}-thousand-${ones[hundred]}-hundred`;
+    }
+
+    if(hundred === 0 && ten === 0 && one === 0) {
+      word = `${ones[thousand]}-thousand`;
     }
   }
 
@@ -125,4 +155,4 @@ function toWords(number) {
   return word;
 }
 
-toWords(800)
+toWords(9113)
