@@ -5,25 +5,47 @@ function toWords(number) {
   const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
   let word;
+  let thousand;
+  let hundred;
+  let ten;
+  let one;
+
+  // 1,000 - 9,999
+  if(number < 9999) {
+    thousand = parseInt(number.toString().split('')[0]);
+    hundred = parseInt(number.toString().split('')[1]);
+    ten = parseInt(number.toString().split('')[2]);
+    one = parseInt(number.toString().split('')[3]);
+
+    word = `${ones[thousand]}-thousand-${ones[hundred]}-hundred-${tens[ten]}-${ones[one]}`
+    
+    if(hundred === 0) {
+      word = `${ones[thousand]}-thousand-${tens[ten]}-${ones[one]}`
+    }
+   
+    if(hundred === 0 && ten === 0 ) {
+      word = `${ones[thousand]}-thousand-${ones[one]}`
+    }
+  }
 
   // 100 - 999
-  if(number < 999) {
-    const left = parseInt(number.toString().split('')[0])
-    const middle = parseInt(number.toString().split('')[1])
-    const right = parseInt(number.toString().split('')[2])
-    word = `${ones[left]}-hundred-${tens[middle]}-${ones[right]}`;
+  if(number < 1000) {
+    hundred = parseInt(number.toString().split('')[0])
+    ten = parseInt(number.toString().split('')[1])
+    one = parseInt(number.toString().split('')[2])
+    word = `${ones[hundred]}-hundred-${tens[ten]}-${ones[one]}`;
   }
 
   // 20 - 99 
   if(number < 100) {
-    const left = parseInt(number.toString().split('')[0])
-    const right = parseInt(number.toString().split('')[1])
-    word = `${tens[left]}-${ones[right]}`;
+    ten = parseInt(number.toString().split('')[0])
+    one = parseInt(number.toString().split('')[1])
+    word = `${tens[ten]}-${ones[one]}`;
   }
 
   // 11-19
   if(number < 20) {
-    const index = parseInt(number.toString().split('')[1])
+    index = parseInt(number.toString().split('')[1])
     word = teens[index];
   }
   
@@ -36,4 +58,4 @@ function toWords(number) {
   return word;
 }
 
-toWords(839)
+toWords(7001)
