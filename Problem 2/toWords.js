@@ -6,6 +6,14 @@ function toWords(number) {
 
   let word;
 
+  // 100 - 999
+  if(number < 999) {
+    const left = parseInt(number.toString().split('')[0])
+    const middle = parseInt(number.toString().split('')[1])
+    const right = parseInt(number.toString().split('')[2])
+    word = `${ones[left]}-hundred-${tens[middle]}-${ones[right]}`;
+  }
+
   // 20 - 99 
   if(number < 100) {
     const left = parseInt(number.toString().split('')[0])
@@ -28,4 +36,4 @@ function toWords(number) {
   return word;
 }
 
-toWords(91)
+toWords(839)
