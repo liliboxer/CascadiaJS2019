@@ -1,4 +1,4 @@
-const data = [
+module.exports = [
   {
   id: 0,
   name: "John",
@@ -15,5 +15,3 @@ const data = [
     skills: ["c", "c++", "go", "rust"]
   }
 ]
-
-module.exports = data;
