@@ -13,13 +13,22 @@ function skills(data) {
   // set up dictionary keys 
   // return an object with the skills as keys
   keys.sort().forEach(skill => {
-  dictionary[skill] = 1;
+  dictionary[skill] = []
   })
 
   data.forEach(person => {
-    console.log(person.skills)
-
+    person.skills.forEach((skill) => {
+      if(keys.includes(skill)) {
+        dictionary[skill] += person.name;
+      }
+    })
   })
+
+
+  // data.forEach(person => {
+  //   console.log(person.skills)
+
+  // })
   console.log(dictionary)
 
   // asign values to associated keys
